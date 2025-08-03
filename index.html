@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Manı's Website</title>
   <style>
+    /* ===== CSS (%33.33) ===== */
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       text-align: center;
@@ -15,7 +16,7 @@
       position: relative;
       min-height: 100vh;
       box-sizing: border-box;
-      padding-bottom: 100px; /* kayan yazı için biraz daha boşluk */
+      padding-bottom: 100px;
     }
 
     h1 {
@@ -41,7 +42,6 @@
       background-color: #0056b3;
     }
 
-    /* Ortak kayan yazı stili */
     .scrolling-text {
       position: fixed;
       white-space: nowrap;
@@ -55,7 +55,6 @@
       user-select: none;
     }
 
-    /* İlk kayan yazı - alt tam genişlik */
     #scrolling-text1 {
       bottom: 10px;
       width: 100%;
@@ -63,7 +62,6 @@
       padding-left: 10px;
     }
 
-    /* İkinci kayan yazı - sağ alt köşe, daha küçük genişlik */
     #scrolling-text2 {
       bottom: 50px;
       right: 10px;
@@ -72,7 +70,6 @@
       padding-right: 10px;
     }
 
-    /* Kayan yazı animasyonu ortak */
     .scrolling-text span {
       display: inline-block;
       padding-left: 100%;
@@ -80,27 +77,32 @@
     }
 
     @keyframes scroll-left {
-      0% {
-        transform: translateX(0%);
-      }
-      100% {
-        transform: translateX(-100%);
-      }
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-100%); }
     }
   </style>
 </head>
 <body>
+  <!-- ===== HTML (%33.33) ===== -->
   <h1>Welcome to Manı's Website!</h1>
   <p>This is a simple interactive webpage built with HTML, CSS, and JavaScript.</p>
 
   <button onclick="changeBackgroundColor()">Change Background Color</button>
 
+  <!-- Kayan yazılar -->
+  <div id="scrolling-text1" class="scrolling-text">
+    <span>Planets of the Universe 🌍 🚀 ✨ Mercury • Venus • Earth • Mars • Jupiter • Saturn • Uranus • Neptune • Pluto (yes, still a planet!)</span>
+  </div>
+
+  <div id="scrolling-text2" class="scrolling-text">
+    <span>Largest Planets: Jupiter • Saturn • Uranus  •  Neptune</span>
+  </div>
+
+  <!-- ===== JavaScript (%33.33) ===== -->
   <script>
-    // Ask for the user's name
     const visitorName = prompt("What's your name?");
     console.log("Visitor's name is: " + visitorName);
 
-    // Background color changer
     const colors = ["#ff6b6b", "#6bc5ff", "#6bff95", "#ffe66b", "#c56bff", "#ffb56b"];
     let index = 0;
 
@@ -109,100 +111,5 @@
       index = (index + 1) % colors.length;
     }
   </script>
-
-  <!-- Kayan yazılar -->
-  <div id="scrolling-text1" class="scrolling-text">
-    <span>Planets of the Universe 🌍 🚀 ✨ Mercury • Venus • Earth • Mars • Jupiter • Saturn • Uranus • Neptune • Pluto (yes, still a planet!)  •  and so many other planet </span>
-  </div>
-
-  <div id="scrolling-text2" class="scrolling-text">
-    <span>Largest Planets: Jupiter • Saturn • Uranus  •  Neptune</span>
-  </div>
-  body {
-  font-family: Arial;
-}
-
-.subscribe-button {
-  border: none;
-  background-color: black;
-  color: white;
-  padding: 10px 15px;
-  font-weight: bold;
-  border-radius: 50px;
-  cursor: pointer;
-  margin-bottom: 30px;
-}
-
-.is-subscribed {
-  background-color: rgb(240, 240, 240);
-  color: black;
-}
-
-.cost-input {
-  font-size: 15px;
-  padding: 10px;
-}
-
-.calculate-button {
-  background-color: green;
-  color: white;
-  border: none;
-  font-size: 15px;
-  padding: 12px 15px;
-  cursor: pointer;
-}
-
 </body>
 </html>
-// Kullanıcının ismini sor, konsola yazdır
-const visitorName = prompt("What's your name?");
-console.log("Visitor's name is: " + visitorName);
-
-// Arka plan rengini değiştirme fonksiyonu
-const colors = ["#ff6b6b", "#6bc5ff", "#6bff95", "#ffe66b", "#c56bff", "#ffb56b"];
-let index = 0;
-
-function changeBackgroundColor() {
-  document.body.style.backgroundColor = colors[index];
-  index = (index + 1) % colors.length;
-}
-/* İlk kayan yazı - alt tam genişlik */
-#scrolling-text1 {
-  position: fixed;
-  bottom: 10px;
-  width: 100%;
-  left: 0;
-  padding-left: 10px;
-  background: rgba(255, 255, 255, 0.8);
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-/* İkinci kayan yazı - sağ alt köşe, daha küçük genişlik */
-#scrolling-text2 {
-  position: fixed;
-  bottom: 50px;
-  right: 10px;
-  width: 300px;
-  text-align: right;
-  padding-right: 10px;
-  background: rgba(255, 255, 255, 0.8);
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-/* Kayan yazı animasyonu ortak */
-.scrolling-text span {
-  display: inline-block;
-  padding-left: 100%;
-  animation: scroll-left 15s linear infinite;
-}
-
-@keyframes scroll-left {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
