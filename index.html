@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Combined Project</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <p>WELCOME</p>
+  <p>TO</p>
+  <p>MATH</p>
+  <p>CALCULATOR</p>
+
+  <!-- Calculator buttons -->
+  <div>
+    <p>
+      <button onclick="updateCalculation('1')">1</button>
+      <button onclick="updateCalculation('2')">2</button>
+      <button onclick="updateCalculation('3')">3</button>
+      <button onclick="updateCalculation(' + ')">+</button>
+    </p>
+    <p>
+      <button onclick="updateCalculation('4')">4</button>
+      <button onclick="updateCalculation('5')">5</button>
+      <button onclick="updateCalculation('6')">6</button>
+      <button onclick="updateCalculation(' - ')">-</button>
+    </p>
+    <p>
+      <button onclick="updateCalculation('7')">7</button>
+      <button onclick="updateCalculation('8')">8</button>
+      <button onclick="updateCalculation('9')">9</button>
+      <button onclick="updateCalculation(' * ')">*</button>
+    </p>
+    <p>
+      <button onclick="updateCalculation('0')">0</button>
+      <button onclick="updateCalculation('.')">.</button>
+      <button onclick="
+        calculation = eval(calculation);
+        console.log(calculation);
+        localStorage.setItem('calculation', calculation);
+      "> = </button>
+      <button onclick="updateCalculation(' / ')">/</button>
+    </p>
+    <p>
+      <button onclick="
+        calculation = '';
+        console.log(calculation);
+        localStorage.setItem('calculation', calculation);
+      ">Clear</button>
+    </p>
+  </div>
+
+  <hr>
+
+  <!-- Mini game Rock Paper Scissors -->
+  <h2>Rock Paper Scissors</h2>
+  <button onclick="playGame('rock')">Rock</button>
+  <button onclick="playGame('paper')">Paper</button>
+  <button onclick="playGame('scissors')">Scissors</button>
+  <button onclick="resetScore()">Reset Score</button>
+
+  <hr>
+
+  <!-- Cart Quantity -->
+  <p>CART QUANTITY</p>
+  <button onclick="console.log(`Cart quantity: ${cartQuantity}`)">Show Quantity</button>
+  <button onclick="updateCartQuantity(1)">Add 1 to Cart</button>
+  <button onclick="updateCartQuantity(2)">Add 2 to Cart</button>
+  <button onclick="updateCartQuantity(3)">Add 3 to Cart</button>
+  <button onclick="updateCartQuantity(4)">Add 4 to Cart</button>
+  <button onclick="updateCartQuantity(5)">Add 5 to Cart</button>
+  <button onclick="updateCartQuantity(-1)">Remove 1</button>
+  <button onclick="updateCartQuantity(-2)">Remove 2</button>
+  <button onclick="updateCartQuantity(-3)">Remove 3</button>
+  <button onclick="resetCart()">Reset Cart</button>
+
+  <hr>
+
+  <!-- YouTube Subscribe Button & Amazon Shipping -->
+  <p>YouTube Subscribe Button</p>
+  <button onclick="subscribe()" id="subscribe-button" class="subscribe-button">Subscribe</button>
+
+  <p>Amazon Shipping Calculator</p>
+  <input placeholder="Cost of order" id="cost-input" class="cost-input" onkeydown="handleCostKeydown(event)">
+  <button onclick="calculateTotal()" class="calculate-button">Calculate</button>
+  <p id="total-cost" class="js-total-cost"></p>
+
+<script src="script.js"></script>
+</body>
+</html>
