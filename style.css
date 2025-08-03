@@ -1,41 +1,12 @@
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding: 20px;
-  text-align: center;
-}
-
-h2 {
-  margin-top: 40px;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #333;
-}
-
-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-  background-color: #007bff;
-  color: white;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
-  margin: 3px;
-}
-
-button:hover {
-  background-color: #0056b3;
+  font-family: Arial;
 }
 
 .subscribe-button {
   border: none;
   background-color: black;
   color: white;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding: 10px 15px;
   font-weight: bold;
   border-radius: 50px;
   cursor: pointer;

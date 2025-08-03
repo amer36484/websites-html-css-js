@@ -2,90 +2,121 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Combined Project</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manı's Website</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 50px;
+      background-color: white;
+      transition: background-color 0.4s ease;
+      position: relative;
+      min-height: 100vh;
+      box-sizing: border-box;
+      padding-bottom: 100px; /* kayan yazı için biraz daha boşluk */
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    p {
+      color: #555;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Ortak kayan yazı stili */
+    .scrolling-text {
+      position: fixed;
+      white-space: nowrap;
+      overflow: hidden;
+      box-sizing: border-box;
+      background: #222;
+      color: #fff;
+      font-size: 1.2em;
+      padding: 10px 0;
+      border-radius: 5px;
+      user-select: none;
+    }
+
+    /* İlk kayan yazı - alt tam genişlik */
+    #scrolling-text1 {
+      bottom: 10px;
+      width: 100%;
+      left: 0;
+      padding-left: 10px;
+    }
+
+    /* İkinci kayan yazı - sağ alt köşe, daha küçük genişlik */
+    #scrolling-text2 {
+      bottom: 50px;
+      right: 10px;
+      width: 300px;
+      text-align: right;
+      padding-right: 10px;
+    }
+
+    /* Kayan yazı animasyonu ortak */
+    .scrolling-text span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: scroll-left 15s linear infinite;
+    }
+
+    @keyframes scroll-left {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+  </style>
 </head>
 <body>
+  <h1>Welcome to Manı's Website!</h1>
+  <p>This is a simple interactive webpage built with HTML, CSS, and JavaScript.</p>
 
-  <p>WELCOME</p>
-  <p>TO</p>
-  <p>MATH</p>
-  <p>CALCULATOR</p>
+  <button onclick="changeBackgroundColor()">Change Background Color</button>
 
-  <!-- Calculator buttons -->
-  <div>
-    <p>
-      <button onclick="updateCalculation('1')">1</button>
-      <button onclick="updateCalculation('2')">2</button>
-      <button onclick="updateCalculation('3')">3</button>
-      <button onclick="updateCalculation(' + ')">+</button>
-    </p>
-    <p>
-      <button onclick="updateCalculation('4')">4</button>
-      <button onclick="updateCalculation('5')">5</button>
-      <button onclick="updateCalculation('6')">6</button>
-      <button onclick="updateCalculation(' - ')">-</button>
-    </p>
-    <p>
-      <button onclick="updateCalculation('7')">7</button>
-      <button onclick="updateCalculation('8')">8</button>
-      <button onclick="updateCalculation('9')">9</button>
-      <button onclick="updateCalculation(' * ')">*</button>
-    </p>
-    <p>
-      <button onclick="updateCalculation('0')">0</button>
-      <button onclick="updateCalculation('.')">.</button>
-      <button onclick="
-        calculation = eval(calculation);
-        console.log(calculation);
-        localStorage.setItem('calculation', calculation);
-      "> = </button>
-      <button onclick="updateCalculation(' / ')">/</button>
-    </p>
-    <p>
-      <button onclick="
-        calculation = '';
-        console.log(calculation);
-        localStorage.setItem('calculation', calculation);
-      ">Clear</button>
-    </p>
+  <script>
+    // Ask for the user's name
+    const visitorName = prompt("What's your name?");
+    console.log("Visitor's name is: " + visitorName);
+
+    // Background color changer
+    const colors = ["#ff6b6b", "#6bc5ff", "#6bff95", "#ffe66b", "#c56bff", "#ffb56b"];
+    let index = 0;
+
+    function changeBackgroundColor() {
+      document.body.style.backgroundColor = colors[index];
+      index = (index + 1) % colors.length;
+    }
+  </script>
+
+  <!-- Kayan yazılar -->
+  <div id="scrolling-text1" class="scrolling-text">
+    <span>Planets of the Universe 🌍 🚀 ✨ Mercury • Venus • Earth • Mars • Jupiter • Saturn • Uranus • Neptune • Pluto (yes, still a planet!)  •  and so many other planet </span>
   </div>
 
-  <hr>
-
-  <!-- Mini game Rock Paper Scissors -->
-  <h2>Rock Paper Scissors</h2>
-  <button onclick="playGame('rock')">Rock</button>
-  <button onclick="playGame('paper')">Paper</button>
-  <button onclick="playGame('scissors')">Scissors</button>
-  <button onclick="resetScore()">Reset Score</button>
-
-  <hr>
-
-  <!-- Cart Quantity -->
-  <p>CART QUANTITY</p>
-  <button onclick="console.log(`Cart quantity: ${cartQuantity}`)">Show Quantity</button>
-  <button onclick="updateCartQuantity(1)">Add 1 to Cart</button>
-  <button onclick="updateCartQuantity(2)">Add 2 to Cart</button>
-  <button onclick="updateCartQuantity(3)">Add 3 to Cart</button>
-  <button onclick="updateCartQuantity(4)">Add 4 to Cart</button>
-  <button onclick="updateCartQuantity(5)">Add 5 to Cart</button>
-  <button onclick="updateCartQuantity(-1)">Remove 1</button>
-  <button onclick="updateCartQuantity(-2)">Remove 2</button>
-  <button onclick="updateCartQuantity(-3)">Remove 3</button>
-  <button onclick="resetCart()">Reset Cart</button>
-
-  <hr>
-
-  <!-- YouTube Subscribe Button & Amazon Shipping -->
-  <p>YouTube Subscribe Button</p>
-  <button onclick="subscribe()" id="subscribe-button" class="subscribe-button">Subscribe</button>
-
-  <p>Amazon Shipping Calculator</p>
-  <input placeholder="Cost of order" id="cost-input" class="cost-input" onkeydown="handleCostKeydown(event)">
-  <button onclick="calculateTotal()" class="calculate-button">Calculate</button>
-  <p id="total-cost" class="js-total-cost"></p>
-
-<script src="script.js"></script>
+  <div id="scrolling-text2" class="scrolling-text">
+    <span>Largest Planets: Jupiter • Saturn • Uranus  •  Neptune</span>
+  </div>
 </body>
 </html>
