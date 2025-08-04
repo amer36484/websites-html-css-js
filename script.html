@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manı'nin Web Sitesi</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f4f4f4;
+    }
+    button {
+      padding: 10px 15px;
+      margin: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #subscribe-button {
+      background: black;
+      color: white;
+      border-radius: 25px;
+      font-weight: bold;
+    }
+    .is-subscribed {
+      background: #eee;
+      color: black;
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+    }
+    .section {
+      background: white;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="section">
+    <h2>1. Hesap Makinesi</h2>
+    <button onclick="updateCalculation('1')">1</button>
+    <button onclick="updateCalculation('+')">+</button>
+    <button onclick="updateCalculation('2')">2</button>
+    <button onclick="updateCalculation('=')">=</button>
+    <p><strong>Son işlem:</strong> <span id="calc-display"></span></p>
+  </div>
+
+  <div class="section">
+    <h2>2. Taş Kağıt Makas</h2>
+    <button onclick="playGame('rock')">🪨 Taş</button>
+    <button onclick="playGame('paper')">📄 Kağıt</button>
+    <button onclick="playGame('scissors')">✂️ Makas</button>
+    <button onclick="resetScore()">Skoru Sıfırla</button>
+  </div>
+
+  <div class="section">
+    <h2>3. Sepet</h2>
+    <button onclick="updateCartQuantity(1)">➕ Sepete Ekle</button>
+    <button onclick="updateCartQuantity(-1)">➖ Sepetten Çıkar</button>
+    <button onclick="resetCart()">♻️ Sıfırla</button>
+  </div>
+
+  <div class="section">
+    <h2>4. Abone Ol</h2>
+    <button id="subscribe-button" onclick="subscribe()">Abone Ol</button>
+  </div>
+
+  <div class="section">
+    <h2>5. Kargo Hesapla</h2>
+    <input id="cost-input" type="number" placeholder="Tutarı gir (₺)" onkeydown="handleCostKeydown(event)">
+    <button class="calculate-button" onclick="calculateTotal()">Hesapla</button>
+    <p id="total-cost">Toplam: ₺0</p>
+  </div>
+
+  <script>
+    // Calculator
+    let calculation = localStorage.getItem('calculation') || '';
+    function updateCalculation(value) {
+      if (value === '=') {
+        try {
+          calculation = eval(calculation).toString();
+        } catch {
+          calculation = 'Hata';
+        }
+      } else {
+        calculation += value;
+      }
+      document.getElementById('calc-display').innerText = calculation;
+      localStorage.setItem('calculation', calculation);
+    }
+
+    // Rock Paper Scissors
+    let score = JSON.parse(localStorage.getItem('score')) || { wins: 0, losses: 0, ties: 0 };
+    function playGame(playerMove) {
+      const computerMove = pickComputerMove();
+      let result = '';
+      if (playerMove === computerMove) {
+        result = 'Berabere.';
+        score.ties++;
+      } else if (
+        (playerMove === 'rock' && computerMove === 'scissors') ||
+        (playerMove === 'scissors' && computerMove === 'paper') ||
+        (playerMove === 'paper' && computerMove === 'rock')
+      ) {
+        result = 'Kazandın!';
+        score.wins++;
+      } else {
+        result = 'Kaybettin!';
+        score.losses++;
+      }
+      localStorage.setItem('score', JSON.stringify(score));
+      alert(`Sen: ${playerMove}, Bilgisayar: ${computerMove} → ${result}\nSkor: ${score.wins}K - ${score.losses}M - ${score.ties}B`);
+    }
+    function pickComputerMove() {
+      const rand = Math.random();
+      if (rand < 1/3) return 'rock';
+      else if (rand < 2/3) return 'paper';
+      return 'scissors';
+    }
+    function resetScore() {
+      score = { wins: 0, losses: 0, ties: 0 };
+      localStorage.removeItem('score');
+      alert("Skor sıfırlandı.");
+    }
+
+    // Cart
+    let cartQuantity = 0;
+    function updateCartQuantity(change) {
+      if (cartQuantity + change > 10) {
+        alert('Sepet dolu');
+        return;
+      }
+      if (cartQuantity + change < 0) {
+        alert('Sepette yeterli ürün yok');
+        return;
+      }
+      cartQuantity += change;
+      console.log(`Sepet: ${cartQuantity}`);
+    }
+    function resetCart() {
+      cartQuantity = 0;
+      console.log("Sepet sıfırlandı.");
+    }
+
+    // Subscribe
+    function subscribe() {
+      const btn = document.getElementById('subscribe-button');
+      if (btn.innerText === 'Abone Ol') {
+        btn.innerText = 'Abone Oldun';
+        btn.classList.add('is-subscribed');
+      } else {
+        btn.innerText = 'Abone Ol';
+        btn.classList.remove('is-subscribed');
+      }
+    }
+
+    // Cost Calculator
+    function handleCostKeydown(event) {
+      if (event.key === 'Enter') {
+        calculateTotal();
+      }
+    }
+    function calculateTotal() {
+      const input = document.getElementById('cost-input');
+      let cost = Number(input.value);
+      if (cost < 40) cost += 10;
+      document.getElementById('total-cost').innerText = `Toplam: ₺${cost}`;
+    }
+  </script>
+</body>
+</html>
+
