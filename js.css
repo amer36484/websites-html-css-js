@@ -1,72 +1,85 @@
-<!DOCTYPE HTML>
-<script>
-<style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Çalışan Web Sayfası</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-top: 40px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #333;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+      margin: 3px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .subscribe-button {
+      border: none;
+      background-color: black;
+      color: white;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 15px;
+      padding-right: 15px;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      margin-bottom: 30px;
+    }
+
+    .is-subscribed {
+      background-color: rgb(240, 240, 240);
+      color: black;
+    }
+
+    .cost-input {
+      font-size: 15px;
+      padding: 10px;
+    }
+
+    .calculate-button {
+      background-color: green;
+      color: white;
+      border: none;
+      font-size: 15px;
+      padding: 12px 15px;
+      cursor: pointer;
+    }
+  </style>
+</head>
 <body>
-<html>
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding: 20px;
-  text-align: center;
-}
 
-h2 {
-  margin-top: 40px;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #333;
-}
+  <h2>Hoş Geldin!</h2>
+  <button class="subscribe-button">Abone Ol</button>
+  <br><br>
+  <input type="number" class="cost-input" placeholder="Tutar girin">
+  <button class="calculate-button">Hesapla</button>
 
-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-  background-color: #007bff;
-  color: white;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
-  margin: 3px;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-.subscribe-button {
-  border: none;
-  background-color: black;
-  color: white;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 15px;
-  padding-right: 15px;
-  font-weight: bold;
-  border-radius: 50px;
-  cursor: pointer;
-  margin-bottom: 30px;
-}
-
-.is-subscribed {
-  background-color: rgb(240, 240, 240);
-  color: black;
-}
-
-.cost-input {
-  font-size: 15px;
-  padding: 10px;
-}
-
-.calculate-button {
-  background-color: green;
-  color: white;
-  border: none;
+  <script>
+    // Buraya istersen JS ekleyebilirsin.
+    console.log("Sayfa yüklendi.");
+  </script>
   
-  font-size: 15px;
-  padding: 12px 15px;
-  cursor: pointer;
-}
-</script>
-</style>
-</body
+</body>
 </html>
